@@ -44,6 +44,7 @@ function getPlayerInput()
     "Please select one of the following options: ROCK, PAPER or SCISSORS",
     ""
   );
+  return aPlayerInput;
 }
 
 function checkRoundWinner(iPlayerSelection, iComputerSelection)

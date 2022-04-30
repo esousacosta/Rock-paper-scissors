@@ -33,7 +33,7 @@ function getComputerChoice()
 function isPlayerInputValid(iPlayerInput)
 {
   const aValidChoicesList = ["ROCK", "PAPER", "SCISSORS"];
-  return aValidChoicesList.indexOf(iPlayerInput.toUpperCase()) !== -1
+  return aValidChoicesList.indexOf(iPlayerInput) !== -1
     ? true
     : false;
 }
@@ -44,10 +44,11 @@ function getPlayerInput()
     "Please select one of the following options: ROCK, PAPER or SCISSORS",
     ""
   );
-  return aPlayerInput;
+  console.log("The player picked: " + aPlayerInput.toUpperCase());
+  return aPlayerInput.toUpperCase();
 }
 
-function checkRoundWinner(iPlayerSelection, iComputerSelection)
+function getRoundWinner(iPlayerSelection, iComputerSelection)
 {
   switch (iPlayerSelection)
   {
@@ -103,7 +104,7 @@ function runSingleRoundOfRockPaperScissors()
   const aComputerChoice = getComputerChoice();
   if (isPlayerInputValid(aPlayerInput))
   {
-    return checkRoundWinner();
+    return getRoundWinner(aPlayerInput, aComputerChoice);
   }
   else
   {
@@ -114,11 +115,37 @@ function runSingleRoundOfRockPaperScissors()
 
 function runGame()
 {
-  for (let i = 0; i < 5; i++)
+  let aPlayerWins = 0;
+  let aComputerWins = 0;
+  let aValidRoundsCount = 0;
+  while (aValidRoundsCount < 5)
   {
     const aResult = runSingleRoundOfRockPaperScissors();
+    if (aResult)
+    {
+      switch (aResult.name)
+      {
+        case 'Player':
+          aPlayerWins++;
+          aValidRoundsCount++;
+          alert("The player won!");
+          break;
+        case 'Computer':
+          aComputerWins++;
+          aValidRoundsCount++;
+          alert("The computer won!");
+          break;
+        default:
+          alert("It's a draw!");
+          aValidRoundsCount++;
+      }
+    }
   }
+  alert(`End of game:
+  The player had ${aPlayerWins} wins; 
+  the computer had ${aComputerWins} wins; 
+  and there were ${aValidRoundsCount - aPlayerWins - aComputerWins} draws.`);
 }
 
 const aLaunchGameButton = document.getElementById("aLaunchGameButtonId");
-aLaunchGameButton.addEventListener("click", runSingleRoundOfRockPaperScissors);
+aLaunchGameButton.addEventListener("click", runGame);

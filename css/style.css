@@ -1,0 +1,19 @@
+body {
+  text-align: center;
+}
+
+img {
+  width: 100%;
+  max-height: 200px;
+}
+
+.pointsSection {
+  display: flex;
+  justify-content: center;
+}
+
+.pointsContainer {
+  margin: 20px 20px;
+  max-width: 300px;
+  max-height: 300px;
+}

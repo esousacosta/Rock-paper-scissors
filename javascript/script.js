@@ -117,7 +117,12 @@ function runGame()
 {
   let aPlayerWins = 0;
   let aComputerWins = 0;
+  let aDraws = 0;
   let aValidRoundsCount = 0;
+  let aPlayerPointsParagraph = document.getElementById("playerPointsPara");
+  let aComputerPointsParagraph = document.getElementById("computerPointsPara");
+  let aDrawPointsParagraph = document.getElementById("drawPointsPara");
+  
   while (aValidRoundsCount < 5)
   {
     const aResult = runSingleRoundOfRockPaperScissors();
@@ -137,14 +142,21 @@ function runGame()
           break;
         default:
           alert("It's a draw!");
+          aDraws++;
           aValidRoundsCount++;
       }
     }
+    setTimeout(() =>
+    {
+      aPlayerPointsParagraph.innerHTML = aPlayerWins;
+      aComputerPointsParagraph.innerHTML = aComputerWins;
+      aDrawPointsParagraph.innerHTML = aDraws;
+    });
   }
   alert(`End of game:
-  The player had ${aPlayerWins} wins; 
-  the computer had ${aComputerWins} wins; 
-  and there were ${aValidRoundsCount - aPlayerWins - aComputerWins} draws.`);
+  - The player had ${aPlayerWins} wins; 
+  - the computer had ${aComputerWins} wins; 
+  - and there were ${aDraws} draws.`);
 }
 
 const aLaunchGameButton = document.getElementById("aLaunchGameButtonId");

@@ -23,7 +23,6 @@ function randomlyPickRockPaperOrScissors()
 function getComputerChoice()
 {
   const aComputerChoice = randomlyPickRockPaperOrScissors();
-  console.log("The computer picked: " + aComputerChoice);
   return aComputerChoice;
 }
 
@@ -44,8 +43,7 @@ function getPlayerInput()
     "Please select one of the following options: ROCK, PAPER or SCISSORS",
     ""
   );
-  console.log("The player picked: " + aPlayerInput.toUpperCase());
-  return aPlayerInput.toUpperCase();
+  return aPlayerInput ? aPlayerInput.toUpperCase() : null;
 }
 
 function getRoundWinner(iPlayerSelection, iComputerSelection)

@@ -146,12 +146,9 @@ function runGame()
           aValidRoundsCount++;
       }
     }
-    setTimeout(() =>
-    {
-      aPlayerPointsParagraph.innerHTML = aPlayerWins;
-      aComputerPointsParagraph.innerHTML = aComputerWins;
-      aDrawPointsParagraph.innerHTML = aDraws;
-    });
+    aPlayerPointsParagraph.innerHTML = aPlayerWins;
+    aComputerPointsParagraph.innerHTML = aComputerWins;
+    aDrawPointsParagraph.innerHTML = aDraws;
   }
   alert(`End of game:
   - The player had ${aPlayerWins} wins; 

@@ -1,5 +1,6 @@
 body {
   text-align: center;
+  background-color: rgb(169,169,169);
 }
 
 #aLaunchGameButtonId {
@@ -7,8 +8,12 @@ body {
   background: peachpuff;
 }
 
+.playerSelectionButton {
+  border-radius: 10px;
+}
+
 h1 {
-  font-family: 'Comic Sans', 'Sans serif';
+  font-family: 'Georgia', 'Serif';
 }
 
 img {

@@ -26,9 +26,9 @@ function getComputerChoice()
   return aComputerChoice;
 }
 
-/*
-* @param{string} iPlayerInput - the player's choice
-*/
+/**
+ * @param {String} iPlayerInput the player's choice
+ */
 function isPlayerInputValid(iPlayerInput)
 {
   const aValidChoicesList = ["ROCK", "PAPER", "SCISSORS"];
@@ -153,6 +153,19 @@ function runGame()
   - the computer had ${aComputerWins} wins; 
   - and there were ${aDraws} draws.`);
 }
+
+/**
+ * 
+ * @param {Array} ioPlayerOptionButtonNodeList a nodelist containing the player option buttons
+ */
+function toggleClickAnimationStyle(ioPlayerOptionButtonNodeList)
+{
+  ioPlayerOptionButtonNodeList.forEach(aNodeButton => aNodeButton.addEventListener('click',
+    (ioEvent) => ioEvent.target.classList.toggle('clickAnimation')));
+}
+
+const aPlayerOptionButtonNodeList = document.querySelectorAll("button.playerSelectionButton");
+toggleClickAnimationStyle(aPlayerOptionButtonNodeList);
 
 const aLaunchGameButton = document.getElementById("aLaunchGameButtonId");
 aLaunchGameButton.addEventListener("click", runGame);

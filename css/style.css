@@ -8,13 +8,30 @@ body {
   background: peachpuff;
 }
 
-.clickAnimation{
+.clickAnimationEnlarge{
   transform: scale(1.1, 1.1);
-  transition: all 0.07s ease;
+  transition: all 0.5s ease;
 }
 
 .playerSelectionButton {
+  max-width: 200px;
+  font-size: 24px;
   border-radius: 10px;
+  height: 100px;
+  width: 100px;
+  flex: 1 1 auto;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+button.playerSelectionButton:hover {
+  transform: scale(1.1, 1.1);
+  transition: all 0.5s ease;
 }
 
 h1 {

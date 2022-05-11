@@ -121,7 +121,7 @@ function runGame()
   let aComputerPointsParagraph = document.getElementById("computerPointsPara");
   let aDrawPointsParagraph = document.getElementById("drawPointsPara");
   
-  while (aValidRoundsCount < 5)
+  while (aValidRoundsCount < 1)
   {
     const aResult = runSingleRoundOfRockPaperScissors();
     if (aResult)
@@ -156,16 +156,33 @@ function runGame()
 
 /**
  * 
+ * @param {Prototype} ioEvent transitionend event
+ */
+function removeEnlargeButtonStyle(ioEvent)
+{
+  if (ioEvent.propertyName !== 'transform')
+  {
+    return;
+  }
+  this.classList.remove('clickAnimationEnlarge');
+}
+
+/**
+ * 
  * @param {Array} ioPlayerOptionButtonNodeList a nodelist containing the player option buttons
  */
 function toggleClickAnimationStyle(ioPlayerOptionButtonNodeList)
 {
   ioPlayerOptionButtonNodeList.forEach(aNodeButton => aNodeButton.addEventListener('click',
-    (ioEvent) => ioEvent.target.classList.toggle('clickAnimation')));
+    (ioEvent) => ioEvent.target.classList.toggle('clickAnimationEnlarge')));
+  ioPlayerOptionButtonNodeList.forEach(aNodeButton => aNodeButton.addEventListener('transitionend',
+    removeEnlargeButtonStyle));
 }
 
 const aPlayerOptionButtonNodeList = document.querySelectorAll("button.playerSelectionButton");
 toggleClickAnimationStyle(aPlayerOptionButtonNodeList);
+
+aPlayerOptionButtonNodeList.forEach(aNodeButton => aNodeButton.addEventListener('click', runGame));
 
 const aLaunchGameButton = document.getElementById("aLaunchGameButtonId");
 aLaunchGameButton.addEventListener("click", runGame);

@@ -96,7 +96,7 @@ function getRoundWinner(iPlayerSelection, iComputerSelection)
   }
 }
 
-function runSingleRoundOfRockPaperScissors()
+function runSingleRoundOfRockPaperScissors(ioEvent)
 {
   const aPlayerInput = getPlayerInput();
   const aComputerChoice = getComputerChoice();
@@ -111,7 +111,8 @@ function runSingleRoundOfRockPaperScissors()
   }
 }
 
-function runGame()
+// TODO: retrieve the player's choice information from the event
+function runGame(ioEvent)
 {
   let aPlayerWins = 0;
   let aComputerWins = 0;
@@ -123,7 +124,7 @@ function runGame()
   
   while (aValidRoundsCount < 1)
   {
-    const aResult = runSingleRoundOfRockPaperScissors();
+    const aResult = runSingleRoundOfRockPaperScissors(ioEvent);
     if (aResult)
     {
       switch (aResult.name)

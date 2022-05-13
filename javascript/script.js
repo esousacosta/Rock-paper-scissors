@@ -104,6 +104,12 @@ function getRoundWinner(iPlayerSelection, iComputerSelection)
     default:
   }
 }
+  
+function addAnimationToComputerButtonSelection(iComputerChoice)
+{
+    const aComputerSelectedOptionButton = document.getElementById(iComputerChoice.toLowerCase() + "Button");
+    aComputerSelectedOptionButton.classList.toggle('clickAnimationEnlargeComputerVersion');
+}
 
 /**
  * 
@@ -115,6 +121,7 @@ function runSingleRoundOfRockPaperScissors(ioEvent)
   // const aPlayerInput = getPlayerInput();
   const aPlayerInput = ioEvent.target.textContent.toUpperCase();
   const aComputerChoice = getComputerChoice();
+  setTimeout(addAnimationToComputerButtonSelection, 1000, aComputerChoice);
   if (isPlayerInputValid(aPlayerInput))
   {
     return getRoundWinner(aPlayerInput, aComputerChoice);
@@ -136,14 +143,11 @@ function runGame(ioEvent)
     {
       case 'Player':
         aPlayerWins++;
-        alert("The player won!");
         break;
       case 'Computer':
         aComputerWins++;
-        alert("The computer won!");
         break;
       default:
-        alert("It's a draw!");
         aDraws++;
     }
   }
@@ -163,6 +167,7 @@ function removeEnlargeButtonStyle(ioEvent)
     return;
   }
   this.classList.remove('clickAnimationEnlarge');
+  this.classList.remove('clickAnimationEnlargeComputerVersion');
 }
 
 /**

@@ -9,6 +9,14 @@ body {
 }
 
 .clickAnimationEnlarge{
+  background-color: greenyellow;
+  transform: scale(1.1, 1.1);
+  transition: all 0.5s ease;
+}
+
+
+.clickAnimationEnlargeComputerVersion{
+  background-color: lightblue;
   transform: scale(1.1, 1.1);
   transition: all 0.5s ease;
 }
@@ -27,11 +35,6 @@ body {
   gap: 10px;
   justify-content: center;
   margin: 0 auto;
-}
-
-button.playerSelectionButton:hover {
-  transform: scale(1.1, 1.1);
-  transition: all 0.5s ease;
 }
 
 h1 {

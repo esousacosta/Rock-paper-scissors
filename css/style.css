@@ -59,4 +59,6 @@ img {
 
 div.pointsContainer > p {
   background-color: peachpuff;
+  font-weight: 900;
+  font-size: 16px;
 }

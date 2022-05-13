@@ -121,7 +121,7 @@ function runSingleRoundOfRockPaperScissors(ioEvent)
   // const aPlayerInput = getPlayerInput();
   const aPlayerInput = ioEvent.target.textContent.toUpperCase();
   const aComputerChoice = getComputerChoice();
-  setTimeout(addAnimationToComputerButtonSelection, 1000, aComputerChoice);
+  setTimeout(addAnimationToComputerButtonSelection, 600, aComputerChoice);
   if (isPlayerInputValid(aPlayerInput))
   {
     return getRoundWinner(aPlayerInput, aComputerChoice);

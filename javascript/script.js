@@ -1,3 +1,12 @@
+"use strict"
+
+var aPlayerPointsParagraph = document.getElementById("playerPointsPara");
+var aComputerPointsParagraph = document.getElementById("computerPointsPara");
+var aDrawPointsParagraph = document.getElementById("drawPointsPara");
+let aPlayerWins = 0;
+let aComputerWins = 0;
+let aDraws = 0;
+
 class Winner
 {
   static kPlayer = new Winner("Player");
@@ -96,9 +105,15 @@ function getRoundWinner(iPlayerSelection, iComputerSelection)
   }
 }
 
+/**
+ * 
+ * @param {object} ioEvent the click event on one of the selection buttons
+ * @returns
+ */
 function runSingleRoundOfRockPaperScissors(ioEvent)
 {
-  const aPlayerInput = getPlayerInput();
+  // const aPlayerInput = getPlayerInput();
+  const aPlayerInput = ioEvent.target.textContent.toUpperCase();
   const aComputerChoice = getComputerChoice();
   if (isPlayerInputValid(aPlayerInput))
   {
@@ -114,45 +129,27 @@ function runSingleRoundOfRockPaperScissors(ioEvent)
 // TODO: retrieve the player's choice information from the event
 function runGame(ioEvent)
 {
-  let aPlayerWins = 0;
-  let aComputerWins = 0;
-  let aDraws = 0;
-  let aValidRoundsCount = 0;
-  let aPlayerPointsParagraph = document.getElementById("playerPointsPara");
-  let aComputerPointsParagraph = document.getElementById("computerPointsPara");
-  let aDrawPointsParagraph = document.getElementById("drawPointsPara");
-  
-  while (aValidRoundsCount < 1)
+  const aResult = runSingleRoundOfRockPaperScissors(ioEvent);
+  if (aResult)
   {
-    const aResult = runSingleRoundOfRockPaperScissors(ioEvent);
-    if (aResult)
+    switch (aResult.name)
     {
-      switch (aResult.name)
-      {
-        case 'Player':
-          aPlayerWins++;
-          aValidRoundsCount++;
-          alert("The player won!");
-          break;
-        case 'Computer':
-          aComputerWins++;
-          aValidRoundsCount++;
-          alert("The computer won!");
-          break;
-        default:
-          alert("It's a draw!");
-          aDraws++;
-          aValidRoundsCount++;
-      }
+      case 'Player':
+        aPlayerWins++;
+        alert("The player won!");
+        break;
+      case 'Computer':
+        aComputerWins++;
+        alert("The computer won!");
+        break;
+      default:
+        alert("It's a draw!");
+        aDraws++;
     }
   }
   aPlayerPointsParagraph.innerHTML = aPlayerWins;
   aComputerPointsParagraph.innerHTML = aComputerWins;
   aDrawPointsParagraph.innerHTML = aDraws;
-  alert(`End of game:
-  - The player had ${aPlayerWins} wins; 
-  - the computer had ${aComputerWins} wins; 
-  - and there were ${aDraws} draws.`);
 }
 
 /**
@@ -184,6 +181,3 @@ const aPlayerOptionButtonNodeList = document.querySelectorAll("button.playerSele
 toggleClickAnimationStyle(aPlayerOptionButtonNodeList);
 
 aPlayerOptionButtonNodeList.forEach(aNodeButton => aNodeButton.addEventListener('click', runGame));
-
-const aLaunchGameButton = document.getElementById("aLaunchGameButtonId");
-aLaunchGameButton.addEventListener("click", runGame);
